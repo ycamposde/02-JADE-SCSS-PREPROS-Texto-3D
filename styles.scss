@@ -1,0 +1,27 @@
+@function texto3d($numero, $color) {
+  $text-shadow: 1px 1px #{ $color };
+  @for $i  from 1 through $numero {
+    $text-shadow: '#{ $text-shadow },
+                  #{ $i }px #{ $i }px #{ $color }'; 
+  }
+  @return unquote($string:  $text-shadow);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Luckiest Guy';
+  background: darken($color: steelblue, $amount: 15%);
+}
+
+.text_3d {
+  font-size: 5rem;
+  color: #eee;
+  text-shadow: texto3d(20, #111);
+}
